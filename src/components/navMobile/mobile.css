@@ -1,0 +1,6 @@
+[aria-label='hamburger-nav'] > * {
+    height: 1px;
+    width: 25px;
+    background-color: black;
+    margin-bottom: 3px;
+}

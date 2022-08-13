@@ -1,0 +1,34 @@
+[aria-label='information-adding'] nav a {
+    padding: 10px 20px 10px 20px;
+    font-weight: 300;
+   
+}
+
+[aria-label='information-adding'] nav a:hover:not(.activeNav) {
+    background: rgb(179, 179, 179);
+    color: white;
+    transition: all .6s ease ;
+}
+
+.activeNav {
+    background: rgb(53, 53, 53);
+    color: white;
+    font-weight: 600;
+}
+
+@media(max-width:768px) {
+    [aria-label='information-adding'] nav a {
+        font-size: .7rem;
+        padding: 5px 10px 8px 10px;
+        font-weight: 300;
+       
+    }
+
+    .activeNav {
+        color: black;
+        background-color: white;
+        font-weight: bold;
+        border-bottom: 5px solid black;
+    }
+    
+}

@@ -1,0 +1,22 @@
+/* [aria-label='card-item-container'] {
+    width: ;
+} */
+
+[aria-label='button-card'] {
+    opacity: 0;
+    transition: opacity .6s ease-in-out;
+}
+
+[aria-label='card-item-container']:hover [aria-label='button-card'] {
+    opacity: 1;
+}
+
+.pages {
+    padding: .5rem .7rem .5rem .7rem ;
+    cursor: pointer;
+}
+
+.activePages {
+    background-color: black;
+    color: white;
+}
