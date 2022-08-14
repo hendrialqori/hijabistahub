@@ -6,7 +6,7 @@ import './modal.css'
 export const ModalProduct = ({ id, avatar, title, price, size, open, handleOpen }) => {
     const [count, setCount] = useState(0)
     return(
-        <section className={`${ open ? 'activel modall' : 'modall' }`}>
+        <section key={Date.now()} className={`${ open ? 'activel modall' : 'modall' }`}>
             <section className="h-[550px] lg:h-auto overflow-auto w-11/12 lg:w-[754px] p-8 mx-auto bg-white" aria-label="modal-card">
                 <div onClick={(e)=> handleOpen(e)} className="w-max ml-auto mr-0 cursor-pointer translate-x-3 -translate-y-3"><GrClose className='text-[27px]' /></div>
                 <div className='flex flex-col md:flex-row  justify-between gap-5' aria-label='modal-container'>

@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+
+const defaultTheme = require('tailwindcss/defaultTheme')
 module.exports = {
   content: [
     './index.html',
@@ -8,6 +10,10 @@ module.exports = {
     extend: {
       fontFamily: {
         Jost: 'Jost, sans-serif'
+      },
+      screens: {
+        xs: '375px', 
+        ...defaultTheme.screens
       }
     }
   },

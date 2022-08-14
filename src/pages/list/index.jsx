@@ -75,7 +75,7 @@ export default function List () {
                   <div className='flex items-center gap-3 text-xs font-light' aria-label='page'>
                     {
                       Array.from({ length: 5 }).map((_, i) => (
-                        <div onClick={() => {
+                        <div key={i} onClick={() => {
                             navigate(`/${params.category}?page=${ i + 1}`)
                             window.location.reload()
                         }} 
@@ -94,7 +94,7 @@ export default function List () {
           <div className='w-11/12 mx-auto flex flex-wrap justify-between gap-3 lg:gap-7' aria-label='list-product-container'>
               {
                 items?.map((item, i) => (
-                  <Item {...item} />
+                  <Item key={i} {...item} />
                 ))
               }
           </div>
@@ -103,7 +103,7 @@ export default function List () {
             <div className='flex items-center gap-3 text-xs font-light' aria-label='page'>
               {
                 Array.from({ length: 5 }).map((_, i) => (
-                  <div onClick={() => {
+                  <div key={i} onClick={() => {
                       navigate(`/${params.category}?page=${ i + 1}`)
                       window.location.reload()
                   }} 

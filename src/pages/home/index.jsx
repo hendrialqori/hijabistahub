@@ -10,7 +10,8 @@ export default function Home () {
   const [images2, setImages2] = useState([])
   const [sliderImg, setSlider] = useState([])
   const [indexSlide, setIndexSlide] = useState(1)
-  const { state } = useStoreContext()
+
+
   useEffect(() => {
     (() => {
       axios.get('/home.json')
@@ -26,7 +27,7 @@ export default function Home () {
   useEffect(() => {
     setInterval(() => {
       setIndexSlide(prev => {
-        return prev > 5 ? 1 : prev + 1
+        return prev > 4 ? 1 : prev + 1
       })
     }, 9000)
   }, [])
@@ -42,7 +43,7 @@ export default function Home () {
             </div>
           ))
         }
-      <div className='absolute bottom-10 left-0 right-0 flex gap-2 w-max mx-auto' aria-label='dot-indicatator'>
+      <div className='hidden absolute bottom-10 left-0 right-0 md:flex gap-2 w-max mx-auto' aria-label='dot-indicatator'>
         {
           Array.from({ length: 5 }).map((dot, i) => (
             <div
@@ -55,13 +56,13 @@ export default function Home () {
       </div>
       </div>
     </section>
-    <section className='bg-white transition duration-200'>
-      <section className='mt-[10px] md:mt-[30px] mb-20 w-11/12 mx-auto'>
-        <div className='flex justify-center flex-wrap gap-3 md:gap-7' aria-label='container1-image'>
+    <section className='bg-white w-[100vw]'>
+      <section className='mt-[30px] mb-20 w-11/12 mx-auto'>
+        <div className='flex flex-wrap justify-center gap-5 md:gap-7' aria-label='container1-image'>
           {
             images?.map(data => (
-              <div key={data.id} className='overflow-hidden w-max' aria-label='card'>
-                <img className='w-[160px] md:w-[210px]  lg:w-[370px]' src={data.url} alt={'image' + data.id}/>
+              <div key={data.id} className='overflow-hidden w-[45%] md:w-[210px] lg:w-[370px]' aria-label='card'>
+                <img className='w-max' src={data.url} alt={'image' + data.id}/>
               </div>
             ))
           }

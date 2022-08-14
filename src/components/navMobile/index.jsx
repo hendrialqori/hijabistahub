@@ -9,7 +9,7 @@ export const Mobile = () => {
   const navigate = useNavigate()
 
   const handleOpen = (e) => {
-    // e.stopPropagation()
+    e.stopPropagation()
     dispatch({ type: 'showBar', payload: !state.isShow })
   }
   return (
@@ -19,7 +19,7 @@ export const Mobile = () => {
             <h1 className='text-xs text-white text-center'>Welcome To Hijabistahub Online Shop</h1>
           </div>
           <div className='flex justify-between items-center py-4 w-11/12 mx-auto' aria-label='main-nav'>
-            <div onClick={(e) => handleOpen()} className='flex flex-col gap-1' aria-label='hamburger-nav'>
+            <div onClick={(e) => handleOpen(e)} className='flex flex-col gap-1' aria-label='hamburger-nav'>
               <div></div>
               <div></div>
               <div></div>
