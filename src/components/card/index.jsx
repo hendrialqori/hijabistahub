@@ -16,8 +16,7 @@ export const Item = (props) => {
     }, [])
 
     const toDetail = () => {
-        navigate('/' + params.category + '/' + title.toLowerCase().split(' ').join('-'))
-        window.location.reload()
+        navigate('/' + params.category + '/' + title.toLowerCase().split(' ').join('-') + '#desc')
     }
 
     return(
@@ -31,12 +30,12 @@ export const Item = (props) => {
                 open={open}
                 handleOpen={handleOpen} 
               /> 
-            <div onClick={() => toDetail()} className={`w-[48%] md:w-[32%] lg:w-[23%] relative cursor-pointer`} aria-label='card-item-container'>
-                <div className="relative">
+            <figure tabIndex='1' role='button' onClick={() => toDetail()} className={`w-[48%] md:w-[32%] lg:w-[23%] relative cursor-pointer`} aria-label='card-item-container'>
+                <header className="relative">
                     <button onClick={(e)=> handleOpen(e)} className='bg-white border-2 h-14 w-32 text-black p-3 absolute top-[50%] right-[25%] font-semibold' aria-label='button-card'>Quick View +</button>
-                    <img onMouseOver={(e)=> e.target.src=url1} onMouseLeave={(e)=> e.target.src=avatar} className='w-[100vw]' src={avatar} alt="avatar-product" />
-                </div>
-                <div className='text-sm text-center py-4 flex flex-col gap-3' aria-label='title-container'>
+                    <img loading="lazy" onMouseOver={(e)=> e.target.src=url1} onMouseLeave={(e)=> e.target.src=avatar} className='w-[100vw]' src={avatar} alt="avatar-product" />
+                </header>
+                <figcaption className='text-sm text-center py-4 flex flex-col gap-3' aria-label='title-container'>
                     <h1>{title}</h1>
                     <p>RM {price}</p>
                     <div className="flex gap-4 w-max mx-auto mt-5" aria-label='size-wrapper'>
@@ -49,8 +48,8 @@ export const Item = (props) => {
                         ))
                     }
                     </div>
-                </div>
-            </div>
+                </figcaption>
+            </figure>
         </>
     )
 }

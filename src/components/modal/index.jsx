@@ -6,14 +6,14 @@ import './modal.css'
 export const ModalProduct = ({ id, avatar, title, price, size, open, handleOpen }) => {
     const [count, setCount] = useState(0)
     return(
-        <section key={Date.now()} className={`${ open ? 'activel modall' : 'modall' }`}>
-            <section className="h-[550px] lg:h-auto overflow-auto w-11/12 lg:w-[754px] p-8 mx-auto bg-white" aria-label="modal-card">
-                <div onClick={(e)=> handleOpen(e)} className="w-max ml-auto mr-0 cursor-pointer translate-x-3 -translate-y-3"><GrClose className='text-[27px]' /></div>
-                <div className='flex flex-col md:flex-row  justify-between gap-5' aria-label='modal-container'>
-                    <div className='' aria-label='image-modal'>
-                        <img className='w-[23rem] lg:w-[29rem]' src={avatar} alt="avatar-modal"  />
-                    </div>
-                    <div className='w-11/12 md:w-6/12 p-2 text-xs ' aria-label='information-modal'>
+        <section key={Date.now()} className={`${ open ? 'modal active' : 'modal' }`}>
+            <figure className="h-[550px] lg:h-auto overflow-auto w-11/12 lg:w-[754px] p-8 mx-auto bg-white" aria-label="modal-card">
+                <div tabIndex='2' role='button' onClick={(e)=> handleOpen(e)} className="w-max ml-auto mr-0 cursor-pointer translate-x-3 -translate-y-3"><GrClose className='text-[27px]' /></div>
+                <section className='flex flex-col md:flex-row  justify-between gap-5' aria-label='modal-container'>
+                    <header className='' aria-label='image-modal'>
+                        <img loading='lazy' className='w-[23rem] lg:w-[29rem]' src={avatar} alt="avatar-modal"  />
+                    </header>
+                    <figcaption className='w-11/12 md:w-6/12 p-2 text-xs ' aria-label='information-modal'>
                         <h1 className='text-2xl font-semibold'>{title}</h1>
                         <p className='font-bold text-lg text-gray-700 mt-1'>RM {price}</p>
                         <p className='my-6 font-light'><span className='font-semibold mr-4'>Ref No</span>BB-006</p>
@@ -44,9 +44,9 @@ export const ModalProduct = ({ id, avatar, title, price, size, open, handleOpen 
                         </div>
                         <button className='bg-black text-white w-full py-4 font-bold tracking-[.14rem] mt-2'>ADD TO BAG</button>
                         <p className='text-sm underline mt-1 text-right'>Views More Details</p>
-                    </div>
-                </div>
-            </section>
+                    </figcaption>
+                </section>
+            </figure>
         </section>
     )
 }

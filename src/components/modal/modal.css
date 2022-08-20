@@ -1,19 +1,18 @@
-.modall {
+.modal {
     position: fixed;
     visibility: hidden;
     opacity: 0;
-    transition: opacity .5s  ease;
     inset: 0;
     z-index: 200;
     background: rgba(0,0,0,0.8);
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
     width: 100%;
+    transition: all .1s ease;
 }
 
-.activel {
+.active {
     visibility: visible;
     opacity: 1;
 }

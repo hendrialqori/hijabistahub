@@ -27,15 +27,13 @@ export default function List () {
   }, [])
 
   const decrementPage = () => {
-    if(query.get('page') == 1) return;
+    if(query.get('page') == 1) return
     navigate(`/${params.category}?page=${page - 1}`)
-    window.location.reload()
   }
 
   const incrementPage = () => {
-    if(query.get('page') == 5) return;
+    if(query.get('page') == 5) return
     navigate(`/${params.category}?page=${parseInt(page) + 1 }`)
-    window.location.reload()
   }
 
   return (
@@ -77,7 +75,6 @@ export default function List () {
                       Array.from({ length: 5 }).map((_, i) => (
                         <div key={i} onClick={() => {
                             navigate(`/${params.category}?page=${ i + 1}`)
-                            window.location.reload()
                         }} 
                         className={ query.get('page') == i + 1 ? 'activePages pages' : 'pages' }>{i + 1}</div>
                       ))
@@ -105,7 +102,6 @@ export default function List () {
                 Array.from({ length: 5 }).map((_, i) => (
                   <div key={i} onClick={() => {
                       navigate(`/${params.category}?page=${ i + 1}`)
-                      window.location.reload()
                   }} 
                   className={ query.get('page') == i + 1 ? 'activePages pages' : 'pages' }>{i + 1}</div>
                 ))

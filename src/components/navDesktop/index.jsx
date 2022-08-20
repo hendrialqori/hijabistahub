@@ -3,260 +3,23 @@ import { AiOutlineInstagram } from 'react-icons/ai'
 import { BiSearch } from 'react-icons/bi'
 import { BsPerson } from 'react-icons/bs'
 import { HiOutlineShoppingBag } from 'react-icons/hi'
-import { useNavigate } from 'react-router-dom'
-import { useState, useRef, useEffect, useCallback } from 'react'
+import { useNavigate, Link } from 'react-router-dom'
+import { useRef, useEffect, useCallback, useLayoutEffect } from 'react'
+import './desktop.css'
 
-const navTitle = [
-  'KURUNG COLLECTION', 'MEN COLLECTION', 'ABAYA SERIES', 'BRIDE SERIES',
-  'DRESS CASUAL WEAR', 'HEADSCARF', 'NVDISMS BEAUTY', 'AS IS ITEM'
-]
-
-const subNav = [
-  {
-    name: 'KURUNG COLLECTION',
-    sub1: [
-      {
-        name: 'HIJABSTA COLLECTION',
-        sub2: [
-          'CLASSIC EMBROIDERY KURUNG',
-          'DRAPE KURUNG PATTERN',
-          'MODERN KURUNG'
-        ]
-      },
-      {
-        name: 'WAWA ZAINAL X HIJABISTAHUB',
-        sub2: [
-          'DIANNA KURUNG',
-          'NASTIYA KURUNG',
-          'SAREEMA KEBAYA',
-          'WIDURI KURUNG',
-          'WAWA ZAINAL FOR KIDS'
-        ]
-      },
-      {
-        name: 'ADIRA SALAHUDI X HIJABISTAHUB',
-        sub2: [
-          'ALVA KURUNG',
-          'DEERA KURUNG',
-          'VELISA KURUNG KEDAH'
-        ]
-      }
-    ]
-  },
-  {
-    name: 'MEN COLLECTION',
-    sub1: [
-      {
-        name: 'HIJABSTA COLLECTION',
-        sub2: [
-          'CLASSIC EMBROIDERY KURUNG',
-          'DRAPE KURUNG PATTERN',
-          'MODERN KURUNG'
-        ]
-      },
-      {
-        name: 'WAWA ZAINAL X HIJABISTAHUB',
-        sub2: [
-          'DIANNA KURUNG',
-          'NASTIYA KURUNG',
-          'SAREEMA KEBAYA',
-          'WIDURI KURUNG',
-          'WAWA ZAINAL FOR KIDS'
-        ]
-      },
-      {
-        name: 'ADIRA SALAHUDI X HIJABISTAHUB',
-        sub2: [
-          'ALVA KURUNG',
-          'DEERA KURUNG',
-          'VELISA KURUNG KEDAH'
-        ]
-      }
-    ]
-  },
-  {
-    name: 'ABAYA SERIES',
-    sub1: [
-      {
-        name: 'INAYRA SERIES',
-        sub2: [
-          'ALEENA PLEATED ABAYA',
-          'ALEENA PLEATED ABAYA FOR KIDS',
-          'ATIFA ABAYA',
-          'AULIYA ABAYA',
-          'ERYNA ABAYA',
-          'HAYAA ABAYA',
-          'INAAYA ABAYA',
-          'KAIRINA ABAYA',
-          'SAFAA ABAYA',
-          'SAFAA ABAYA FOR KIDS',
-          'WADINA ABAYA'
-        ]
-      },
-      {
-        name: 'FAITH SERIES',
-        sub2: [
-          'AAFIYA ABAYA',
-          'AFSHA KHIMAR',
-          'AJWA ABAYA',
-          'BILQIS ABAYA',
-          'MEDINA KHIMAR',
-          'RAUDHAH ABAYA',
-          'SYIFA ABAYA'
-        ]
-      }
-    ]
-  },
-  {
-    name: 'BRIDE SERIES',
-    sub1: [
-      {
-        name: 'INAYRA SERIES',
-        sub2: [
-          'ALEENA PLEATED ABAYA',
-          'ALEENA PLEATED ABAYA FOR KIDS',
-          'ATIFA ABAYA',
-          'AULIYA ABAYA',
-          'ERYNA ABAYA',
-          'HAYAA ABAYA',
-          'INAAYA ABAYA',
-          'KAIRINA ABAYA',
-          'SAFAA ABAYA',
-          'SAFAA ABAYA FOR KIDS',
-          'WADINA ABAYA'
-        ]
-      },
-      {
-        name: 'FAITH SERIES',
-        sub2: [
-          'AAFIYA ABAYA',
-          'AFSHA KHIMAR',
-          'AJWA ABAYA',
-          'BILQIS ABAYA',
-          'MEDINA KHIMAR',
-          'RAUDHAH ABAYA',
-          'SYIFA ABAYA'
-        ]
-      }
-    ]
-  },
-  {
-    name: 'HEADSCARF',
-    sub1: [
-      {
-        name: 'INAYRA SERIES',
-        sub2: [
-          'ALEENA PLEATED ABAYA',
-          'ALEENA PLEATED ABAYA FOR KIDS',
-          'ATIFA ABAYA',
-          'AULIYA ABAYA',
-          'ERYNA ABAYA',
-          'HAYAA ABAYA',
-          'INAAYA ABAYA',
-          'KAIRINA ABAYA',
-          'SAFAA ABAYA',
-          'SAFAA ABAYA FOR KIDS',
-          'WADINA ABAYA'
-        ]
-      },
-      {
-        name: 'FAITH SERIES',
-        sub2: [
-          'AAFIYA ABAYA',
-          'AFSHA KHIMAR',
-          'AJWA ABAYA',
-          'BILQIS ABAYA',
-          'MEDINA KHIMAR',
-          'RAUDHAH ABAYA',
-          'SYIFA ABAYA'
-        ]
-      }
-    ]
-  },
-  {
-    name: 'NVDISMS BEAUTY',
-    sub1: [
-      {
-        name: 'INAYRA SERIES',
-        sub2: [
-          'ALEENA PLEATED ABAYA',
-          'ALEENA PLEATED ABAYA FOR KIDS',
-          'ATIFA ABAYA',
-          'AULIYA ABAYA',
-          'ERYNA ABAYA',
-          'HAYAA ABAYA',
-          'INAAYA ABAYA',
-          'KAIRINA ABAYA',
-          'SAFAA ABAYA',
-          'SAFAA ABAYA FOR KIDS',
-          'WADINA ABAYA'
-        ]
-      },
-      {
-        name: 'FAITH SERIES',
-        sub2: [
-          'AAFIYA ABAYA',
-          'AFSHA KHIMAR',
-          'AJWA ABAYA',
-          'BILQIS ABAYA',
-          'MEDINA KHIMAR',
-          'RAUDHAH ABAYA',
-          'SYIFA ABAYA'
-        ]
-      }
-    ]
-  },
-  {
-    name: 'DRESS CASUAL WEAR',
-    sub1: [
-      {
-        name: 'INAYRA SERIES',
-        sub2: [
-          'ALEENA PLEATED ABAYA',
-          'ALEENA PLEATED ABAYA FOR KIDS',
-          'ATIFA ABAYA',
-          'AULIYA ABAYA',
-          'ERYNA ABAYA',
-          'HAYAA ABAYA',
-          'INAAYA ABAYA',
-          'KAIRINA ABAYA',
-          'SAFAA ABAYA',
-          'SAFAA ABAYA FOR KIDS',
-          'WADINA ABAYA'
-        ]
-      },
-      {
-        name: 'FAITH SERIES',
-        sub2: [
-          'AAFIYA ABAYA',
-          'AFSHA KHIMAR',
-          'AJWA ABAYA',
-          'BILQIS ABAYA',
-          'MEDINA KHIMAR',
-          'RAUDHAH ABAYA',
-          'SYIFA ABAYA'
-        ]
-      }
-    ]
-  }
-]
 
 export const Desktop = () => {
 
-  const [show, setShow] = useState(false)
-  const [title, setTitle] = useState('')
   const subHeadRef = useRef(null)
   const navigate = useNavigate()
-  const [subN, setSubNav] = useState(false)
+
 
   const handleScroll = useCallback(() => {
     if (window.scrollY > 50) {
-      subHeadRef.current.classList.add('hidden')
-      setSubNav(true)
+      subHeadRef.current?.classList.add('hidden')
     }
     else{
-      subHeadRef.current.classList.remove('hidden')
-      setSubNav(false)
+      subHeadRef.current?.classList.remove('hidden')
     }
   }, [])
 
@@ -264,14 +27,35 @@ export const Desktop = () => {
     window.addEventListener('scroll', handleScroll)
   }, [handleScroll])
 
+  useLayoutEffect(()=> {
+    const navItem = document.querySelectorAll("[aria-label='nav-item']")
+    navItem.forEach(e => {
+      e.addEventListener('mouseenter', e => {
+        const subNavLink = e.target.children[0]
+        const subNavItem =  e.target.children[1]
+
+        subNavLink.classList.add('border-b-4')
+        subNavItem.classList.remove('sub__hidden')
+      })
+
+      e.addEventListener('mouseleave', e => {
+        const subNavLink = e.target.children[0]
+        const subNavItem =  e.target.children[1]
+
+        subNavLink.classList.remove('border-b-4')
+        subNavItem.classList.add('sub__hidden')
+      })
+    })
+  }, [])
+
   const toCategory = (nav) => {
     navigate('/' + nav.toLowerCase().split(' ').join('-') + '?page=1')
-    window.location.reload()
   }
+
   return (
     <header className="bg-black fixed left-0 right-0 z-[200]">
-        <div ref={subHeadRef} className="w-[94%] mx-auto py-[.9rem] text-white" aria-label="header-sub-container">
-          <section className="flex justify-between text-xs" aria-label="sub-nav">
+        <section ref={subHeadRef} className="w-[94%] mx-auto py-[.9rem] text-white" aria-label="header-sub-container">
+          <div className="flex justify-between text-xs" aria-label="sub-nav">
               <select className="bg-black text-white pr-2" name="" id="">
                 <option className="bg-white text-black" value="">MYR</option>
                 <option className="bg-white text-black" value="">SGD</option>
@@ -284,9 +68,9 @@ export const Desktop = () => {
                 <button>Dropship login</button> /
                 <button>Register</button>
               </div>
-          </section>
-        </div>
-        <div className="bg-white py-4" aria-label="header-title-wrapper">
+          </div>
+        </section>
+        <section className="bg-white py-4" aria-label="header-title-wrapper">
           <div className="w-[93%] mx-auto flex justify-between items-center" aria-label="main-header-container">
             <div className='flex gap-2 text-2xl' aria-label='socmed-icon'>
               <RiFacebookFill className='text-[1.6rem]' />
@@ -310,52 +94,237 @@ export const Desktop = () => {
               </div>
             </div>
           </div>
-        </div>
-       <div 
-          className='bg-white'
-          aria-label='nav-wrapper'
-          >
-            <nav className='text-black flex gap-6 text-[.82rem] font-semibold mx-auto w-max pt-4 tracking-[.02rem]'>
-              {
-                navTitle.map((nav, i) => (
-                  <div key={i}>
-                    <div
-                      onMouseOver={(e) => {
-                        setShow(true)
-                        setTitle(e.target.innerHTML)
-                      }}
-                      onMouseLeave={() => setShow(false)}
-                      className='hover:border-b-4 border-b-black h-[30px] transition-all duration-50 cursor-pointer'
-                      onClick={() => toCategory(nav)} >
-                      <h1>{nav}</h1>
-                    </div>
-                    <div className={`${!show && 'hidden'} ${ subN ? 'top-[121px]' : 'top-[180px]' } absolute bg-white  py-14 left-0 right-0 `}>
-                      {
-                        subNav.filter(sub => sub.name === title).map((data, i) => (
-                          <div key={i} className='flex gap-5 w-max mx-auto'>
-                                {
-                                  data.sub1.map((sub, i) => (
-                                    <div key={i} className='font-light'>
-                                      <h2 className='font-semibold mb-3'>{sub.name}</h2>
-                                        <ul>
-                                          {
-                                            sub.sub2.map((sub2, i) => (
-                                              <li key={i}>{sub2}</li>
-                                            ))
-                                          }
-                                        </ul>
-                                    </div>
-                                  ))
-                                }
-                          </div>
-                        ))
-                      }
-                    </div>
-                  </div>
-                ))
-              }
-            </nav>
-       </div>
+        </section>
+       <section className='bg-white'aria-label='nav-wrapper'>
+          <nav className='text-black text-[.82rem] font-semibold mx-auto w-max py-4 tracking-[.02rem]'>
+            <ul className='flex gap-6 ' aria-label='nav-item-wrapper'>
+              <li aria-label='nav-item'>
+                <Link className='relative z-[20] pb-3 border-black transition-all duration-100' to={'/kurung-collection?page=1'}>
+                  KURUNG COLLECTION
+                </Link>
+                <div  className={`${'sub__nav sub__hidden'} pt-12 absolute shadow-md pb-7  left-0 right-0 grid place-items-center`} aria-label='sub-nav-wrapper'>
+                  <ul className='flex gap-16' aria-label='sub-nav-container'>
+                  <li>
+                      <h1>WAWA ZAINAL X HIJABISTAHUB</h1>
+                        <div className='font-light mt-3 grid gap-1' aria-label='sub-nav-item-wrapper'>
+                            <p>CLASSIC EMBROIDERY KURUNG</p>
+                            <p>DRAPE KURUNG PATTERN</p>
+                            <p>MODERN KURUNG</p>
+                            <p>DRAPE KURUNG PATTERN</p>
+                            <p>MODERN KURUNG</p>
+                        </div>
+                    </li>
+                    <li>
+                      <h1>ADIRA SALAHUDI X HIJABISTAHUB</h1>
+                        <div className='font-light mt-3 grid gap-1' aria-label='sub-nav-item-wrapper'>
+                            <p>CLASSIC EMBROIDERY KURUNG</p>
+                            <p>DRAPE KURUNG PATTERN</p>
+                            <p>MODERN KURUNG</p>
+                        </div>
+                    </li>
+                    <li>
+                      <h1>HIJAB COLLECTION</h1>
+                        <div className='font-light mt-3 grid gap-1' aria-label='sub-nav-item-wrapper'>
+                            <p>CLASSIC EMBROIDERY KURUNG</p>
+                            <p>DRAPE KURUNG PATTERN</p>
+                            <p>MODERN KURUNG</p>
+                        </div>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li aria-label='nav-item'>
+                <Link className='relative z-[20] pb-3 border-black transition-all duration-100' to={'/kurung-collection?page=1'}>
+                  MEN COLLECTION
+                </Link>
+                <div className={`${'sub__nav sub__hidden'} pt-12 absolute shadow-md pb-7 left-0 right-0 grid place-items-center`} aria-label='sub-nav-wrapper'>
+                  <ul className='grid gap-2' aria-label='sub-nav-container'>        
+                    <li>ADAM KURTA FOR KIDS</li>
+                    <li>AERIL ZAFREL BAJU MELAYU</li>
+                    <li>AERIL ZAFREL FOR KIDS</li>
+                    <li>IDRIS KURTA</li>
+                    <li>IDRIS KURTA FOR KIDS</li>
+                    <li>QAISER BAJU MELAYU</li>
+                    <li>ADAM KURTA</li>
+                  </ul>
+                </div>
+              </li>
+              <li aria-label='nav-item'>
+                <Link className='relative z-[20] pb-3 border-black transition-all duration-100' to={'/kurung-collection?page=1'}>
+                  ABAYA SERIES
+                </Link>
+                <div className={`${'sub__nav sub__hidden'} pt-12 absolute shadow-md pb-7 left-0 right-0 grid place-items-center`} aria-label='sub-nav-wrapper'>
+                  <ul className='flex gap-16' aria-label='sub-nav-container'>
+                    <li>
+                      <h1>INAIRA SERIES</h1>
+                        <div className='font-light mt-3 grid gap-1' aria-label='sub-nav-item-wrapper'>
+                            <p>CLASSIC EMBROIDERY KURUNG</p>
+                            <p>DRAPE KURUNG PATTERN</p>
+                            <p>MODERN KURUNG</p>
+                        </div>
+                    </li>
+                    <li>
+                      <h1>FAITH SERIES</h1>
+                        <div className='font-light mt-3 grid gap-1' aria-label='sub-nav-item-wrapper'>
+                            <p>CLASSIC EMBROIDERY KURUNG</p>
+                            <p>DRAPE KURUNG PATTERN</p>
+                            <p>MODERN KURUNG</p>
+                            <p>DRAPE KURUNG PATTERN</p>
+                            <p>MODERN KURUNG</p>
+                        </div>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li aria-label='nav-item'>
+                <Link className='relative z-[20] pb-3 border-black transition-all duration-100' to={'/kurung-collection?page=1'}>
+                  BRIDE SERIES
+                </Link>
+                <div className={`${'sub__nav sub__hidden'} pt-12 absolute shadow-md pb-7 left-0 right-0 grid place-items-center`} aria-label='sub-nav-wrapper'>
+                  <ul className='flex gap-6' aria-label='sub-nav-container'>
+                    <li>
+                      <h1>WAWA ZAINAL X HIJABISTAHUB</h1>
+                        <div className='font-light mt-3 grid gap-1' aria-label='sub-nav-item-wrapper'>
+                            <p>CLASSIC EMBROIDERY KURUNG</p>
+                            <p>DRAPE KURUNG PATTERN</p>
+                            <p>MODERN KURUNG</p>
+                            <p>DRAPE KURUNG PATTERN</p>
+                            <p>MODERN KURUNG</p>
+                        </div>
+                    </li>
+                    <li>
+                      <h1>ADIRA SALAHUDI X HIJABISTAHUB</h1>
+                        <div className='font-light mt-3 grid gap-1' aria-label='sub-nav-item-wrapper'>
+                            <p>CLASSIC EMBROIDERY KURUNG</p>
+                            <p>DRAPE KURUNG PATTERN</p>
+                            <p>MODERN KURUNG</p>
+                        </div>
+                    </li>
+                    <li>
+                      <h1>HIJAB COLLECTION</h1>
+                        <div className='font-light mt-3 grid gap-1' aria-label='sub-nav-item-wrapper'>
+                            <p>CLASSIC EMBROIDERY KURUNG</p>
+                            <p>DRAPE KURUNG PATTERN</p>
+                            <p>MODERN KURUNG</p>
+                        </div>
+                    </li>
+                    <li>
+                      <h1>WAWA ZAINAL X HIJABISTAHUB</h1>
+                        <div className='font-light mt-3 grid gap-1' aria-label='sub-nav-item-wrapper'>
+                            <p>CLASSIC EMBROIDERY KURUNG</p>
+                            <p>DRAPE KURUNG PATTERN</p>
+                            <p>MODERN KURUNG</p>
+                            <p>DRAPE KURUNG PATTERN</p>
+                            <p>MODERN KURUNG</p>
+                        </div>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+               <li aria-label='nav-item'>
+                <Link className='relative z-[20] pb-3 border-black transition-all duration-100' to={'/kurung-collection?page=1'}>
+                  DRESS &amp; CASUAL WEAR
+                </Link>
+                <div className={`${'sub__nav sub__hidden'} pt-12 absolute shadow-md pb-7 left-0 right-0 grid place-items-center`} aria-label='sub-nav-wrapper'>
+                  <ul className='flex gap-6' aria-label='sub-nav-container'>
+                    <li>
+                      <h1>WAWA ZAINAL X HIJABISTAHUB</h1>
+                        <div className='font-light mt-3 grid gap-1' aria-label='sub-nav-item-wrapper'>
+                            <p>CLASSIC EMBROIDERY KURUNG</p>
+                            <p>DRAPE KURUNG PATTERN</p>
+                            <p>MODERN KURUNG</p>
+                            <p>DRAPE KURUNG PATTERN</p>
+                            <p>MODERN KURUNG</p>
+                        </div>
+                    </li>
+                    <li>
+                      <h1>ADIRA SALAHUDI X HIJABISTAHUB</h1>
+                        <div className='font-light mt-3 grid gap-1' aria-label='sub-nav-item-wrapper'>
+                            <p>CLASSIC EMBROIDERY KURUNG</p>
+                            <p>DRAPE KURUNG PATTERN</p>
+                            <p>MODERN KURUNG</p>
+                        </div>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li aria-label='nav-item'>
+                <Link className='relative z-[20] pb-3 border-black transition-all duration-100' to={'/kurung-collection?page=1'}>
+                  HEADSCARF
+                </Link>
+                <div className={`${'sub__nav sub__hidden'} pt-12 absolute shadow-md pb-7 left-0 right-0 grid place-items-center`} aria-label='sub-nav-wrapper'>
+                  <ul className='flex gap-16' aria-label='sub-nav-container'>
+                    <li>
+                      <h1>INAIRA SERIES</h1>
+                        <div className='font-light mt-3 grid gap-1' aria-label='sub-nav-item-wrapper'>
+                            <p>CLASSIC EMBROIDERY KURUNG</p>
+                            <p>DRAPE KURUNG PATTERN</p>
+                            <p>MODERN KURUNG</p>
+                        </div>
+                    </li>
+                    <li>
+                      <h1>FAITH SERIES</h1>
+                        <div className='font-light mt-3 grid gap-1' aria-label='sub-nav-item-wrapper'>
+                            <p>CLASSIC EMBROIDERY KURUNG</p>
+                            <p>DRAPE KURUNG PATTERN</p>
+                            <p>MODERN KURUNG</p>
+                            <p>DRAPE KURUNG PATTERN</p>
+                            <p>MODERN KURUNG</p>
+                        </div>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li aria-label='nav-item'>
+                <Link className='relative z-[20] pb-3 border-black transition-all duration-100' to={'/kurung-collection?page=1'}>
+                  NVDISMS BEAUTY
+                </Link>
+                <div className={`${'sub__nav sub__hidden'} pt-12 absolute shadow-md pb-7 left-0 right-0 grid place-items-center`} aria-label='sub-nav-wrapper'>
+                  <ul className='flex gap-16' aria-label='sub-nav-container'>
+                  <li>
+                      <h1>WAWA ZAINAL X HIJABISTAHUB</h1>
+                        <div className='font-light mt-3 grid gap-1' aria-label='sub-nav-item-wrapper'>
+                            <p>CLASSIC EMBROIDERY KURUNG</p>
+                            <p>DRAPE KURUNG PATTERN</p>
+                            <p>MODERN KURUNG</p>
+                            <p>DRAPE KURUNG PATTERN</p>
+                            <p>MODERN KURUNG</p>
+                        </div>
+                    </li>
+                    <li>
+                      <h1>ADIRA SALAHUDI X HIJABISTAHUB</h1>
+                        <div className='font-light mt-3 grid gap-1' aria-label='sub-nav-item-wrapper'>
+                            <p>CLASSIC EMBROIDERY KURUNG</p>
+                            <p>DRAPE KURUNG PATTERN</p>
+                            <p>MODERN KURUNG</p>
+                        </div>
+                    </li>
+                    <li>
+                      <h1>HIJAB COLLECTION</h1>
+                        <div className='font-light mt-3 grid gap-1' aria-label='sub-nav-item-wrapper'>
+                            <p>CLASSIC EMBROIDERY KURUNG</p>
+                            <p>DRAPE KURUNG PATTERN</p>
+                            <p>MODERN KURUNG</p>
+                        </div>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li aria-label='nav-item'>
+                <Link className='relative z-[20] pb-3 border-black transition-all duration-100' to={'/kurung-collection?page=1'}>
+                  NVDISMS BEAUTY
+                </Link>
+                <div className={`${'sub__nav sub__hidden'} pt-12 absolute shadow-md pb-7 left-0 right-0 grid place-items-center`} aria-label='sub-nav-wrapper'>
+                  <ul className='flex gap-16' aria-label='sub-nav-container'>
+                  <li>
+                      <h1>OFF SEASON COLLECTION</h1>
+                  </li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </nav>
+       </section>
     </header>
   )
 }

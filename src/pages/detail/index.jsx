@@ -5,6 +5,7 @@ import axios from 'axios'
 import { ImArrowLeft2, ImArrowRight2 } from 'react-icons/im'
 import { HiMinusSm, HiPlusSm } from 'react-icons/hi'
 import { IoIosArrowUp, IoIosArrowDown } from 'react-icons/io'
+import { Subnav } from '../../components/subNav/sub'
 import './detail.css'
 
 const changeAvatar = [
@@ -25,7 +26,6 @@ export default function Detail () {
     const [products, setProduct] = useState([])
     const [count, setCount] = useState(1)
     const [avatarP, setAvatarP] = useState("")
-
 
     useEffect(()=> {
         axios.get('/list.json')
@@ -108,31 +108,8 @@ export default function Detail () {
                             </div>
                         </div>
                     </div>
-                    <div className='flex flex-col w-11/12 lg:w-6/12 mx-auto justify-center items-center my-20 boder-b-[1px] ' aria-label='information-adding'>
-                        <nav className='border-b-[2px] text-sm flex'>
-                            <a className='activeNav' href="#description">
-                                Description
-                            </a>
-                            <a href="#size-chart">
-                                Size Chart
-                            </a>
-                            <a href="#size-guide">
-                                Size Guide
-                            </a>
-                            <a href="#shipping-details">
-                                Shipping Details
-                            </a>
-                        </nav>
-                        <div className='mt-6 '>
-                            <ul className='list-disc text-gray-400 text-[.85rem] leading-6'>
-                                <li>Kurung Modern Pattern</li>
-                                <li>2 Layer hand pattern, lace inside and chiffon puff on outside.</li>
-                                <li>Material lace with lining </li>
-                                <li>Zip : Back ,wrist and skirt (half rubber skirt)</li>
-                                <li>Due to lighting effects, monitor’s brightness, contrast setting, etc, they could be some slight differences in <br /> the colour tone of the pictures and the actual item.</li>
-                            </ul>
-                        </div>
-                    </div>
+                    {/* Subnav information */}
+                    <Subnav />
                 </div>
             </section>
         </Layout>

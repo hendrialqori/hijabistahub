@@ -1,11 +1,11 @@
 import { Desktop } from '../navDesktop'
 import { Mobile } from '../navMobile'
 import { Footer } from '../footer'
-import { useStoreContext } from '../../context-api'
-import { IoIosArrowForward, IoIosArrowUp } from 'react-icons/io'
+import { useStoreContext } from '../../contex-manegement'
+import { IoIosArrowForward } from 'react-icons/io'
 import { RiFacebookFill } from 'react-icons/ri'
 import { AiOutlineInstagram } from 'react-icons/ai'
-import { useCallback, useEffect, useRef } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 
@@ -18,19 +18,21 @@ export const Layout = ({ children }) => {
   const { state : { isShow }, dispatch } = useStoreContext()
   const navigate = useNavigate()
   const buttonRef = useRef(null)
+  const [isMobile, setMobile] = useState(false)
 
   const resizeFunc = useCallback((e)=> {
-    window.location.reload()
-  },[])
+    if(window.innerWidth <= 1024 ) setMobile(true)
+    else setMobile(false)
+  },[isMobile])
 
   const scrollArrow = useCallback(()=> {
-    if(window.scrollY >= 300) return buttonRef.current?.classList?.remove('hidden')
-    else return buttonRef.current?.classList?.add('hidden')
+    if(window.scrollY >= 300) buttonRef.current?.classList?.remove('hidden')
+    else buttonRef.current?.classList?.add('hidden')
   }, [])
 
   useEffect(()=> {
     window.addEventListener('resize', resizeFunc)
-  }, [resizeFunc])
+  }, [resizeFunc, isMobile])
 
   useEffect(()=> {
     window.addEventListener('scroll', scrollArrow)
@@ -89,12 +91,12 @@ export const Layout = ({ children }) => {
 
        <main 
           onClick={()=> dispatch({ type:"showBar", payload: false })}
-          style={{ transform: isShow && window.innerWidth <= 1336 && 'translateX(280px)' }}
+          style={{ transform: isShow && window.innerWidth <= 1024 && 'translateX(280px)' }}
           className={`relative font-Jost flex flex-col justify-between shadow-2xl transition-all duration-500`}
         >
-          { window.innerWidth >= 1336 ? <Desktop /> : <Mobile /> }
+          { isMobile || window.innerWidth <= 1024 ? <Mobile /> : <Desktop />  }
           { children }
-        <Footer />
+          <Footer />
       </main> 
 
       <button 

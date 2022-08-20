@@ -1,8 +1,6 @@
 import { Layout } from '../../components/layout'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-// import { Link } from 'react-router-dom'
-import { useStoreContext } from '../../context-api'
 import './home.css'
 
 export default function Home () {
@@ -39,7 +37,7 @@ export default function Home () {
         {
           sliderImg?.map((obj, i) => (
             <div key={i} className={indexSlide === parseInt(obj.id) ? 'slide active-anim' : 'slide'}>
-              <img className='h-full w-full object-fill' src={obj.url} />
+              <img loading='lazy' className='h-full w-full object-fill' src={obj.url} />
             </div>
           ))
         }
@@ -62,7 +60,7 @@ export default function Home () {
           {
             images?.map(data => (
               <div key={data.id} className='overflow-hidden w-[45%] md:w-[210px] lg:w-[370px]' aria-label='card'>
-                <img className='w-max' src={data.url} alt={'image' + data.id}/>
+                <img loading='lazy' className='w-max' src={data.url} alt={'image' + data.id}/>
               </div>
             ))
           }
@@ -71,7 +69,7 @@ export default function Home () {
           {
             images2?.map(data => (
               <div key={data.id} className='overflow-hidden w-max' aria-label='card'>
-                <img className='grow' src={data.url} alt={'image' + data.id} width={window.innerWidth > 1024 ? 580 : 320} />
+                <img loading='lazy' className='grow' src={data.url} alt={'image' + data.id} width={window.innerWidth > 1024 ? 580 : 320} />
               </div>
             ))
           }
