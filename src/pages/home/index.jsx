@@ -37,7 +37,7 @@ export default function Home () {
         {
           sliderImg?.map((obj, i) => (
             <div key={i} className={indexSlide === parseInt(obj.id) ? 'slide active-anim' : 'slide'}>
-              <img loading='lazy' className='h-full w-full object-fill' src={obj.url} />
+              <img loading='lazy' className='h-full w-full object-fill' alt='slider-image' src={obj.url} />
             </div>
           ))
         }
@@ -47,7 +47,10 @@ export default function Home () {
             <div
               key={i}
               onClick={() => setIndexSlide(prev => i + 1)}
-              className={indexSlide === i + 1 ? 'dotActive' : 'dot'}>
+              className={indexSlide === i + 1 ? 'dotActive' : 'dot'}
+              role='button'
+              tabIndex='3'
+              >
               </div>
           ))
         }

@@ -9,3 +9,7 @@
     visibility: hidden;
     opacity: 0;
 }
+
+.account__hidden {
+    transform: translateX(300px);
+}

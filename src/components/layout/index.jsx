@@ -6,7 +6,9 @@ import { IoIosArrowForward } from 'react-icons/io'
 import { RiFacebookFill } from 'react-icons/ri'
 import { AiOutlineInstagram } from 'react-icons/ai'
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
+import { GrClose } from 'react-icons/gr'
+import './layout.css'
 
 
 const navTitle = [
@@ -15,7 +17,7 @@ const navTitle = [
 ]
 
 export const Layout = ({ children }) => {
-  const { state : { isShow }, dispatch } = useStoreContext()
+  const { state : { isShow, cartShow }, dispatch } = useStoreContext()
   const navigate = useNavigate()
   const buttonRef = useRef(null)
   const [isMobile, setMobile] = useState(false)
@@ -41,6 +43,42 @@ export const Layout = ({ children }) => {
 
   return (
     <div className='relative overflow-hidden' aria-label='main-wrapper-project'>
+      <section className={` ${ cartShow ? 'cart__' : 'cart__hidden cart__' } fixed right-0 top-0 h-[100vh] w-[320px] xs:w-[350px] shadow-lg z-[500] bg-white`}>
+        <div className='w-[90%] mx-auto flex flex-col h-full' aria-label='cart-container'>
+          <header className='border-b-gray-200 border-b-[1px] flex justify-between items-center py-5 px-3'>
+            <h1 className='font-bold text-sm tracking-[.7px]'>
+              MY SHOPPING BAG
+            </h1>
+            <button onClick={() => dispatch({ type:'showCart', paylod: false })} className='text-gray-100'>
+              <GrClose />
+            </button>
+          </header>
+          <section className='h-[63%] border-b-gray-200 border-b-[1px] ' aria-label='cart-list'>
+              <p className='text-[.75rem] text-center mt-10 text-gray-600'>Your shopping cart is empty.</p>
+          </section>
+          <section className='mt-3' aria-label='cart-action'>
+            <div className='text-xs flex justify-between tracking-[.7px]' aria-label='card-amount-label'>
+                <div>
+                  <h1 className='font-bold mb-1' >TOTAL ITEM</h1>
+                  <h2>0</h2>
+                </div>
+                <div className='text-right'>
+                  <h1 className='font-bold mb-1' >SUB TOTAL</h1>
+                  <h2>RM 0.00</h2>
+                </div>
+            </div>
+            <div className='mt-3' aria-label='chart-action-button'>
+                <button className='w-full text-xs mb-2 text-white bg-black py-4 hover:bg-gray-700'>
+                  Checkout Now
+                </button>
+                <button className='w-full text-xs text-black border-[1px] border-gray-400 py-4  hover:bg-gray-500'>
+                  Checkout Now
+                </button>
+            </div>
+          </section>
+        </div>
+      </section>
+
       <section style={{ display: window.innerWidth >= 1332 && 'none' }} className='absolute left-0 h-[500px] overflow-auto bg-black text-white text-xs' aria-label='fixed-nav'>
         <div className='p-4'>
           <form className=''>
@@ -58,8 +96,8 @@ export const Layout = ({ children }) => {
             </div>
           </div>
           <div className='flex gap-3 text-xs' aria-label='user-wrapper'>
-              <p>LOGIN</p> |
-              <p>REGISTER</p>
+              <Link to='/login'>LOGIN</Link> |
+              <Link to='/login'>REGISTER</Link>
             </div>
         </div>
         <div onClick={()=> dispatch({ type:"showBar", payload: false })} className='bg-white text-black p-4 text-[.7rem] tracking-[.08rem]' aria-label='main-nav'>
@@ -93,10 +131,10 @@ export const Layout = ({ children }) => {
           onClick={()=> dispatch({ type:"showBar", payload: false })}
           style={{ transform: isShow && window.innerWidth <= 1024 && 'translateX(280px)' }}
           className={`relative font-Jost flex flex-col justify-between shadow-2xl transition-all duration-500`}
-        >
+        > 
           { isMobile || window.innerWidth <= 1024 ? <Mobile /> : <Desktop />  }
-          { children }
-          <Footer />
+          { children } 
+           <Footer />
       </main> 
 
       <button 

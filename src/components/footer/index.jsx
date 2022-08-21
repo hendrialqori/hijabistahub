@@ -48,7 +48,7 @@ export const Footer = () => {
 
         </div>
         
-        <h3 className="text-center text-[.8rem] py-10 w-10/12 md:w-full mx-auto">Copyright © 2022 Hijabistahub. All Rights Reserved. Powered by Webspert.</h3>
+        <p className="text-center text-[.8rem] py-10 w-10/12 md:w-full mx-auto">Copyright © 2022 Hijabistahub. All Rights Reserved. Powered by Webspert.</p>
     </footer>
   )
 }

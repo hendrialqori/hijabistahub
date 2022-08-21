@@ -6,7 +6,8 @@ const appContext = createContext({
 })
 
 const initialState = {
-  isShow: false
+  isShow: false,
+  cartShow : false
 }
 
 const Reducer = (state, action) => {
@@ -15,6 +16,11 @@ const Reducer = (state, action) => {
       return {
         ...state,
         isShow: action.payload
+      }
+    case 'showCart':
+      return {
+          ...state,
+          cartShow: action.payload
       }
   }
 }

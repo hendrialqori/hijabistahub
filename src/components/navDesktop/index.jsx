@@ -4,7 +4,8 @@ import { BiSearch } from 'react-icons/bi'
 import { BsPerson } from 'react-icons/bs'
 import { HiOutlineShoppingBag } from 'react-icons/hi'
 import { useNavigate, Link } from 'react-router-dom'
-import { useRef, useEffect, useCallback, useLayoutEffect } from 'react'
+import { useStoreContext } from '../../contex-manegement'
+import { useRef, useEffect, useCallback, useLayoutEffect, useState } from 'react'
 import './desktop.css'
 
 
@@ -12,6 +13,9 @@ export const Desktop = () => {
 
   const subHeadRef = useRef(null)
   const navigate = useNavigate()
+  const { dispatch } = useStoreContext()
+
+  const [showAccount, setAccount] = useState(false)
 
 
   const handleScroll = useCallback(() => {
@@ -71,7 +75,28 @@ export const Desktop = () => {
           </div>
         </section>
         <section className="bg-white py-4" aria-label="header-title-wrapper">
-          <div className="w-[93%] mx-auto flex justify-between items-center" aria-label="main-header-container">
+          <div className="w-[93%] mx-auto flex justify-between items-center relative" aria-label="main-header-container">
+            
+            <div className={`${!showAccount && 'account__hidden' } absolute top-14 right-0 bg-white border-[1px] z-[25] border-gray-200  w-[200px] text-[.8rem] transition-all duration-400 ease-linear`} aria-label='user-activity'>
+              <header className='border-b-[1px] border-b-gray-300'>
+                <h1 className='pl-4 py-4' >My Account</h1>
+              </header>
+              <section className='pl-4 py-2 grid gap-4 text-gray-400'>
+                <div className='flex gap-4'>
+                  <Link to='/login'>
+                    Sign in
+                  </Link>
+                  /
+                  <Link to='/login'>
+                    Register
+                  </Link>
+                </div>
+                <Link to='#'>
+                    Whistlist
+                </Link>
+              </section>
+            </div>
+
             <div className='flex gap-2 text-2xl' aria-label='socmed-icon'>
               <RiFacebookFill className='text-[1.6rem]' />
               <AiOutlineInstagram />
@@ -84,11 +109,11 @@ export const Desktop = () => {
                 <BiSearch className='text-2xl mb-1' />
                 Search
               </div>
-              <div className='text-xs flex flex-col items-center'>
+              <div onClick={()=> setAccount(prev => !prev)} className='text-xs flex flex-col items-center' role='button'>
                 <BsPerson className='text-2xl mb-1' />
                 Sign in
               </div>
-              <div className='text-xs flex flex-col items-center'>
+              <div onClick={()=> dispatch({ type:'showCart', payload: true })} role='button' className='text-xs flex flex-col items-center'>
                 <HiOutlineShoppingBag className='text-2xl mb-1' />
                 Bag
               </div>
