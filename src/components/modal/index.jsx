@@ -1,6 +1,8 @@
 import { GrClose } from 'react-icons/gr'
 import { useState } from 'react'
 import { HiMinusSm, HiPlusSm } from 'react-icons/hi'
+import { LazyLoadImage as Image } from 'react-lazy-load-image-component'
+import 'react-lazy-load-image-component/src/effects/blur.css';
 import './modal.css'
 
 export const ModalProduct = ({ id, avatar, title, price, size, open, handleOpen }) => {
@@ -11,7 +13,7 @@ export const ModalProduct = ({ id, avatar, title, price, size, open, handleOpen 
                 <div tabIndex='2' role='button' onClick={(e)=> handleOpen(e)} className="w-max ml-auto mr-0 cursor-pointer translate-x-3 -translate-y-3"><GrClose className='text-[27px]' /></div>
                 <section className='flex flex-col md:flex-row  justify-between gap-5' aria-label='modal-container'>
                     <header className='' aria-label='image-modal'>
-                        <img loading='lazy' className='w-[23rem] lg:w-[29rem]' src={avatar} alt="avatar-modal"  />
+                        <Image loading='lazy' className='w-[23rem] lg:w-[29rem]' src={avatar} alt="avatar-modal" effect="blur" />
                     </header>
                     <figcaption className='w-11/12 md:w-6/12 p-2 text-xs ' aria-label='information-modal'>
                         <h1 className='text-2xl font-semibold'>{title}</h1>

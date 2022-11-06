@@ -2,7 +2,7 @@
    [
         {
             "id": 1,
-            "avatar": "https://www.hijabistahub.com/scripts/timthumb.php?src=https://www.hijabistahub.com/site_media/img/0L7A9475_20220329223244.jpg&w=500&zc=1",
+            "avatar": "https://www.hijabistahub.com/_next/image?url=https%3A%2F%2Fassets.hijabistahub.com%2Fimages%2Fproducts%2F1665666061.jfif&w=1920&q=75",
             "title": "DIANNA KURUNG FOR KIDS (AQUA BLUE)",
             "price": "159.000",
             "size": [
@@ -12,7 +12,7 @@
         },
         {
             "id": 2,
-            "avatar": "https://www.hijabistahub.com/scripts/timthumb.php?src=https://www.hijabistahub.com/site_media/img/0L7A9208_20220329223501.jpg&w=500&zc=1",
+            "avatar": "https://www.hijabistahub.com/_next/image?url=https%3A%2F%2Fassets.hijabistahub.com%2Fimages%2Fproducts%2F1665686321.jpg&w=1920&q=75",
             "title": "DIANNA KURUNG FOR KIDS (BLACK)",
             "price": "177.000",
             "size": [
@@ -22,7 +22,7 @@
         },
         {
             "id": 3,
-            "avatar": "https://www.hijabistahub.com/scripts/timthumb.php?src=https://www.hijabistahub.com/site_media/img/0L7A9425_20220329223544.jpg&w=500&zc=1",
+            "avatar": "https://www.hijabistahub.com/_next/image?url=https%3A%2F%2Fassets.hijabistahub.com%2Fimages%2Fproducts%2F1665732150.jpg&w=1920&q=75",
             "title": "DIANNA KURUNG FOR KIDS (AQUA BLUE)",
             "price": "190.000",
             "size": [
@@ -32,7 +32,7 @@
         },
         {
             "id": 4,
-            "avatar": "https://www.hijabistahub.com/scripts/timthumb.php?src=https://www.hijabistahub.com/site_media/img/0L7A9475_20220329223244.jpg&w=500&zc=1",
+            "avatar": "https://www.hijabistahub.com/_next/image?url=https%3A%2F%2Fassets.hijabistahub.com%2Fimages%2Fproducts%2F1665662458.jpg&w=1920&q=75",
             "title": "DIANNA KURUNG FOR KIDS (AQUA BLUE)",
             "price": "200.000",
             "size": [
@@ -42,7 +42,7 @@
         },
         {
             "id": 5,
-            "avatar": "https://www.hijabistahub.com/scripts/timthumb.php?src=https://www.hijabistahub.com/site_media/img/0L7A9518_20220329224012.jpg&w=500&zc=1",
+            "avatar": "https://assets.hijabistahub.com/images/products/1665779343.jpg",
             "title": "DIANNA KURUNG FOR KIDS (AQUA BLUE)",
             "price": "159.000",
             "size": [
@@ -51,8 +51,18 @@
 
         },
         {
-            "id": 6,
-            "avatar": "https://www.hijabistahub.com/scripts/timthumb.php?src=https://www.hijabistahub.com/site_media/img/0L7A9371_20220330095704.jpg&w=500&zc=1",
+            "id": 1,
+            "avatar": "https://www.hijabistahub.com/_next/image?url=https%3A%2F%2Fassets.hijabistahub.com%2Fimages%2Fproducts%2F1665666061.jfif&w=1920&q=75",
+            "title": "DIANNA KURUNG FOR KIDS (AQUA BLUE)",
+            "price": "159.000",
+            "size": [
+                "1 - 2", "7 - 8"
+            ]
+
+        },
+        {
+            "id": 2,
+            "avatar": "https://www.hijabistahub.com/_next/image?url=https%3A%2F%2Fassets.hijabistahub.com%2Fimages%2Fproducts%2F1665686321.jpg&w=1920&q=75",
             "title": "DIANNA KURUNG FOR KIDS (BLACK)",
             "price": "177.000",
             "size": [
@@ -61,22 +71,12 @@
 
         },
         {
-            "id": 7,
-            "avatar": "https://www.hijabistahub.com/scripts/timthumb.php?src=https://www.hijabistahub.com/site_media/img/0L7A9475_20220329223244.jpg&w=500&zc=1",
+            "id": 3,
+            "avatar": "https://www.hijabistahub.com/_next/image?url=https%3A%2F%2Fassets.hijabistahub.com%2Fimages%2Fproducts%2F1665732150.jpg&w=1920&q=75",
             "title": "DIANNA KURUNG FOR KIDS (AQUA BLUE)",
             "price": "190.000",
             "size": [
                 "7 - 8"
-            ]
-
-        },
-        {
-            "id": 8,
-            "avatar": "https://www.hijabistahub.com/scripts/timthumb.php?src=https://www.hijabistahub.com/site_media/img/0L7A9475_20220329223244.jpg&w=500&zc=1",
-            "title": "DIANNA KURUNG FOR KIDS (AQUA BLUE)",
-            "price": "200.000",
-            "size": [
-                "1 - 2", "7 - 8", "12 - 13"
             ]
 
         }

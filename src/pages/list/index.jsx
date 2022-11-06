@@ -5,6 +5,8 @@ import { useParams, useSearchParams, useNavigate } from 'react-router-dom'
 import { GoChevronLeft, GoChevronRight } from 'react-icons/go'
 import { useEffect } from 'react'
 import axios from 'axios'
+import { LazyLoadImage as Image } from 'react-lazy-load-image-component'
+import 'react-lazy-load-image-component/src/effects/blur.css';
 import './list.css'
 
 export default function List () {

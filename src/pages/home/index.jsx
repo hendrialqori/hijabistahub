@@ -1,6 +1,8 @@
 import { Layout } from '../../components/layout'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
+import { LazyLoadImage as Image } from 'react-lazy-load-image-component'
+import 'react-lazy-load-image-component/src/effects/blur.css';
 import './home.css'
 
 export default function Home () {
@@ -25,9 +27,10 @@ export default function Home () {
   useEffect(() => {
     setInterval(() => {
       setIndexSlide(prev => {
-        return prev > 4 ? 1 : prev + 1
+        return prev >= 3 ? 1 : prev + 1
       })
-    }, 9000)
+      
+    }, 6000)
   }, [])
 
   return (
@@ -37,19 +40,19 @@ export default function Home () {
         {
           sliderImg?.map((obj, i) => (
             <div key={i} className={indexSlide === parseInt(obj.id) ? 'slide active-anim' : 'slide'}>
-              <img loading='lazy' className='h-full w-full object-fill' alt='slider-image' src={obj.url} />
+              <Image className='h-full w-full object-fill' alt='slider-image' src={obj.url} effect={'blur'} />
             </div>
           ))
         }
       <div className='hidden absolute bottom-10 left-0 right-0 md:flex gap-2 w-max mx-auto' aria-label='dot-indicatator'>
         {
-          Array.from({ length: 5 }).map((dot, i) => (
+          Array.from({ length: 3 }).map((dot, i) => (
             <div
               key={i}
               onClick={() => setIndexSlide(prev => i + 1)}
               className={indexSlide === i + 1 ? 'dotActive' : 'dot'}
               role='button'
-              tabIndex='3'
+              tabIndex={0}
               >
               </div>
           ))
@@ -63,7 +66,7 @@ export default function Home () {
           {
             images?.map(data => (
               <div key={data.id} className='overflow-hidden w-[45%] md:w-[210px] lg:w-[370px]' aria-label='card'>
-                <img loading='lazy' className='w-max' src={data.url} alt={'image' + data.id}/>
+                <Image className='w-max' src={data.url} alt={'image' + data.id} effect={'blur'} />
               </div>
             ))
           }

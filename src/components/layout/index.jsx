@@ -1,7 +1,7 @@
 import { Desktop } from '../navDesktop'
 import { Mobile } from '../navMobile'
 import { Footer } from '../footer'
-import { useStoreContext } from '../../contex-manegement'
+import { useStoreContext } from '../../context/store'
 import { IoIosArrowForward } from 'react-icons/io'
 import { RiFacebookFill } from 'react-icons/ri'
 import { AiOutlineInstagram } from 'react-icons/ai'

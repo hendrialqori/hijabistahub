@@ -2,51 +2,51 @@
     "home1": [
         {
             "id": 1,
-            "url": "https://www.hijabistahub.com/site_media/img/banners/Artboard%2012_20220406101819.png"
+            "url": "https://www.hijabistahub.com/_next/image?url=https%3A%2F%2Fassets.hijabistahub.com%2Fimages%2Fbanners%2F1662635303.jpg&w=1920&q=25"
         },
         {
             "id": 2,
-            "url": "https://www.hijabistahub.com/site_media/img/banners/AERIL%20ZAFREL_20220324125652.png"
+            "url": "https://www.hijabistahub.com/_next/image?url=https%3A%2F%2Fassets.hijabistahub.com%2Fimages%2Fbanners%2F1662635273.png&w=1920&q=25"
         },
         {
             "id": 3,
-            "url": "https://www.hijabistahub.com/site_media/img/banners/banner%20bride_20220107113108.png"
+            "url": "https://www.hijabistahub.com/_next/image?url=https%3A%2F%2Fassets.hijabistahub.com%2Fimages%2Fbanners%2F1662635257.png&w=1920&q=25"
         },
         {
             "id": 4,
-            "url": "https://www.hijabistahub.com/site_media/img/banners/HH%20Lebaran%206%20row_20220324124545.png"
+            "url": "https://www.hijabistahub.com/_next/image?url=https%3A%2F%2Fassets.hijabistahub.com%2Fimages%2Fbanners%2F1662635246.png&w=1920&q=25"
         },
         {
             "id": 5,
-            "url": "https://www.hijabistahub.com/site_media/img/banners/MEN-BANNER1_20211222013133.jpg"
+            "url": "https://www.hijabistahub.com/_next/image?url=https%3A%2F%2Fassets.hijabistahub.com%2Fimages%2Fbanners%2F1662635234.png&w=1920&q=25"
         },
         {
             "id": 6,
-            "url": "https://www.hijabistahub.com/site_media/img/banners/CASUAL_20220613162231.png"
+            "url": "https://www.hijabistahub.com/_next/image?url=https%3A%2F%2Fassets.hijabistahub.com%2Fimages%2Fbanners%2F1662635219.png&w=1920&q=25"
         }
     ],
     "home2" : [
         {
             "id": 1,
-            "url": "https://www.hijabistahub.com/site_media/img/banners/naim%20banner%201_20220324122006.jpg"
+            "url": "https://www.hijabistahub.com/_next/image?url=https%3A%2F%2Fassets.hijabistahub.com%2Fimages%2Fbanners%2F1662635321.jpg&w=1920&q=25"
         },
         {
             "id": 2,
-            "url": "https://www.hijabistahub.com/site_media/img/banners/MAGINIFICENT_20220613163040.png"
+            "url": "https://www.hijabistahub.com/_next/image?url=https%3A%2F%2Fassets.hijabistahub.com%2Fimages%2Fbanners%2F1666755207.jpg&w=1920&q=25"
         }
     ],
     "slider": [
         {   
             "id": 1,
-            "url": "https://www.hijabistahub.com/site_media/img/banners/BANNER%20WEB%20PRECIOUS-01_20220810085219.jpg"
+            "url": "https://assets.hijabistahub.com/images/banners/1666944958.jpg"
         },
         {
             "id": 2,
-            "url": "https://www.hijabistahub.com/site_media/img/banners/BANNER%20WEBSITE%20BM-01_20220308171732.png"
+            "url": "https://assets.hijabistahub.com/images/banners/1666944614.jpg"
         },
         {
             "id": 3,
-            "url": "https://www.hijabistahub.com/site_media/img/banners/BANNER%20WEBSITE-01%20(1)_20220728091342.jpg"
+            "url": "https://assets.hijabistahub.com/images/banners/1666918524.jpg"
         },
         {
             "id": 4,

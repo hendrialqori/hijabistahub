@@ -4,7 +4,7 @@ import { BiSearch } from 'react-icons/bi'
 import { BsPerson } from 'react-icons/bs'
 import { HiOutlineShoppingBag } from 'react-icons/hi'
 import { useNavigate, Link } from 'react-router-dom'
-import { useStoreContext } from '../../contex-manegement'
+import { useStoreContext } from '../../context/store'
 import { useRef, useEffect, useCallback, useLayoutEffect, useState } from 'react'
 import './desktop.css'
 

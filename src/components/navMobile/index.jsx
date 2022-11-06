@@ -1,6 +1,6 @@
 import './mobile.css'
 import { HiOutlineShoppingBag } from 'react-icons/hi'
-import { useStoreContext } from '../../contex-manegement'
+import { useStoreContext } from '../../context/store'
 import { useNavigate } from 'react-router-dom'
 
 export const Mobile = () => {
